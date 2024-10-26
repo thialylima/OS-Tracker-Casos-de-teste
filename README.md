@@ -103,35 +103,35 @@ Definida como 80% de cobertura desejável para o projeto OS-Tracker, com a meta 
 ### 7. Casos de Testes
 
 #### 7.1 Client CRUD
-| ID do Teste | Descrição                          | Entrada                | Resultado Esperado                 |
-|-------------|------------------------------------|------------------------|------------------------------------|
-| T-CLI-01    | Criar novo cliente                 | Nome, email, telefone  | Cliente criado com sucesso         |
-| T-CLI-02    | Consultar cliente                  | ID do cliente          | Retorna informações do cliente     |
-| T-CLI-03    | Atualizar dados do cliente         | Nome, telefone         | Dados atualizados com sucesso      |
-| T-CLI-04    | Excluir cliente                    | ID do cliente          | Cliente removido do sistema        |
+| ID do Teste | Descrição                          | Entrada                | Resultado Esperado                                                               | Resultado em Caso de Falha           |
+|-------------|------------------------------------|------------------------|---------------------------------------------------------------------|---------------------------------------------------|
+| T-CLI-01    | Criar novo cliente                 | Nome, email, telefone  | Cliente criado com sucesso e salvo no PostgreSQL (Supabase)         |Cliente não cadastrado ou erro de validação exibido|
+| T-CLI-02    | Consultar cliente                  | ID do cliente          | Retorna informações do cliente salvas no PostgreSQL (Supabase)      | Cliente não encontrado ou erro na consulta        |
+| T-CLI-03    | Atualizar dados do cliente         | Nome, telefone         | Dados atualizados com sucesso e refletidos no PostgreSQL (Supabase) | Dados permanecem inalterados ou erro de validação |
+| T-CLI-04    | Excluir cliente                    | ID do cliente          | Cliente removido do sistema e do PostgreSQL (Supabase)              | Cliente não removido ou erro ao tentar excluir    |
 
 #### 7.2 Employee CRUD
-| ID do Teste | Descrição                          | Entrada                | Resultado Esperado                 |
-|-------------|------------------------------------|------------------------|------------------------------------|
-| T-EMP-01    | Criar novo funcionário             | Nome, cargo            | Funcionário criado com sucesso     |
-| T-EMP-02    | Consultar funcionário              | ID do funcionário      | Retorna informações do funcionário |
-| T-EMP-03    | Atualizar dados do funcionário     | Nome, cargo            | Dados atualizados com sucesso      |
-| T-EMP-04    | Excluir funcionário                | ID do funcionário      | Funcionário removido do sistema    |
+| ID do Teste | Descrição                          | Entrada                | Resultado Esperado                 | Resultado em Caso de Falha           |
+|-------------|------------------------------------|------------------------|------------------------------------|--------------------------------------|
+| T-EMP-01    | Criar novo funcionário             | Nome, cargo            | Funcionário criado com sucesso e salvo no PostgreSQL (Supabase) | Funcionário não cadastrado, erro de validação |
+| T-EMP-02    | Consultar funcionário              | ID do funcionário      | Retorna informações do funcionário salvas no PostgreSQL (Supabase) | Funcionário não encontrado ou erro na consulta |
+| T-EMP-03    | Atualizar dados do funcionário     | Nome, cargo            | Dados atualizados com sucesso no PostgreSQL (Supabase) | Dados permanecem inalterados ou erro ao atualizar |
+| T-EMP-04    | Excluir funcionário                | ID do funcionário      | Funcionário removido do sistema e do PostgreSQL (Supabase) | Funcionário não removido ou erro ao excluir |
 
 #### 7.3 Equipment CRUD
-| ID do Teste | Descrição                          | Entrada                       | Resultado Esperado                 |
-|-------------|------------------------------------|-------------------------------|------------------------------------|
-| T-EQP-01    | Registrar novo equipamento         | Nome, modelo, número de série | Equipamento registrado             |
-| T-EQP-02    | Consultar equipamento              | Número de série               | Retorna informações do equipamento |
-| T-EQP-03    | Atualizar dados do equipamento     | Nome, modelo                  | Dados atualizados com sucesso      |
-| T-EQP-04    | Excluir equipamento                | Número de série               | Equipamento removido do sistema    |
+| ID do Teste | Descrição                          | Entrada                       | Resultado Esperado                 | Resultado em Caso de Falha           |
+|-------------|------------------------------------|-------------------------------|------------------------------------|--------------------------------------|
+| T-EQP-01    | Registrar novo equipamento         | Nome, modelo, número de série | Equipamento registrado com sucesso e salvo no PostgreSQL (Supabase) | Equipamento não registrado, erro de validação |
+| T-EQP-02    | Consultar equipamento              | Número de série               | Retorna informações do equipamento salvas no PostgreSQL (Supabase) | Equipamento não encontrado ou erro na consulta |
+| T-EQP-03    | Atualizar dados do equipamento     | Nome, modelo                  | Dados atualizados com sucesso no PostgreSQL (Supabase) | Dados permanecem inalterados ou erro ao atualizar |
+| T-EQP-04    | Excluir equipamento                | Número de série               | Equipamento removido do sistema e do PostgreSQL (Supabase) | Equipamento não removido ou erro ao excluir |
 
 #### 7.4 ServiceOrder CRUD
-| ID do Teste | Descrição                          | Entrada                           | Resultado Esperado                 |
-|-------------|------------------------------------|-----------------------------------|------------------------------------|
-| T-SO-01     | Criar nova ordem de serviço        | Cliente, equipamento, responsável | OS criada com sucesso              |
-| T-SO-02     | Consultar ordem de serviço         | Número da OS                      | Retorna informações da OS          |
-| T-SO-03     | Atualizar dados da ordem de serviço| Status, responsável               | Dados da OS atualizados            |
-| T-SO-04     | Excluir ordem de serviço           | Número da OS                      | OS removida do sistema             |
+| ID do Teste | Descrição                          | Entrada                           | Resultado Esperado                 | Resultado em Caso de Falha           |
+|-------------|------------------------------------|-----------------------------------|------------------------------------|--------------------------------------|
+| T-SO-01     | Criar nova ordem de serviço        | Cliente, equipamento, responsável | OS criada com sucesso e salva no PostgreSQL (Supabase) | OS não criada, erro de validação |
+| T-SO-02     | Consultar ordem de serviço         | Número da OS                      | Retorna informações da OS salvas no PostgreSQL (Supabase) | OS não encontrada ou erro ao buscar |
+| T-SO-03     | Atualizar dados da ordem de serviço| Status, responsável               | Dados da OS atualizados e refletidos no PostgreSQL (Supabase) | Dados permanecem inalterados ou erro ao atualizar |
+| T-SO-04     | Excluir ordem de serviço           | Número da OS                      | OS removida do sistema e do PostgreSQL (Supabase) | OS não removida ou erro ao excluir |
 
 ---
